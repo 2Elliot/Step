@@ -15,13 +15,22 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Look",
-                    "type": "Value",
-                    "id": "f4f53faf-762f-4f92-a84b-9e4504ed5d1e",
-                    "expectedControlType": "Vector2",
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "19046197-cb12-4ffa-b438-e9bf08227d08",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "5fa9cb83-588d-466c-9adf-12520f25d78e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -148,12 +157,23 @@
                 },
                 {
                     "name": "",
-                    "id": "7a13305c-0ff7-4ed7-bdb1-4cc340730d09",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "5bac018d-b71b-445d-863b-c512dcc2dcf4",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de21cecc-7e2e-4308-a78b-7a0a3f8f9824",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

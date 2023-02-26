@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour {
 
@@ -17,10 +17,10 @@ public class InputHandler : MonoBehaviour {
 		return inputVector;
 	}
 
-	public Vector2 GetRotationVector() {
-		Vector2 rotationVector = playerInputActions.Player.Look.ReadValue<Vector2>();
+	public float GetSprintKey() {
+		float getSprint = playerInputActions.Player.Sprint.ReadValue<float>();
 
-		return rotationVector;
+		return getSprint;
 	}
 
 }
