@@ -30,20 +30,19 @@ public class Player : MonoBehaviour {
 
 		float additionalSpeedCoefficient = 1.0f;
 		float moveDistance = playerSpeed * additionalSpeedCoefficient * Time.deltaTime;
-		float playerRadius = 0.7f;
 		float raycastDistance = 0.1f;
-		bool canMove = !Physics2D.CircleCast(transform.position, playerRadius, inputVector, raycastDistance, collidableLayerMask); // Return true if no raycast returned
+		bool canMove = !Physics2D.Raycast(transform.position, inputVector, raycastDistance, collidableLayerMask); // Return true if no raycast returned
 
 		if (!canMove) {
 
 			Vector2 moveDirectionX = new Vector2(inputVector.x, 0f);
-			bool canMoveX = !Physics2D.CircleCast(transform.position, playerRadius, moveDirectionX, raycastDistance, collidableLayerMask);
+			bool canMoveX = !Physics2D.Raycast(transform.position, inputVector, raycastDistance, collidableLayerMask);
 			if (canMoveX) { // Can move in the X direction
 				moveDirection = moveDirectionX;
 			}
 
 			Vector2 moveDirectionY = new Vector2(0f, inputVector.y);
-			bool canMoveY = !Physics2D.CircleCast(transform.position, playerRadius, moveDirectionY, raycastDistance, collidableLayerMask);
+			bool canMoveY = !Physics2D.Raycast(transform.position, inputVector, raycastDistance, collidableLayerMask);
 			if (canMoveY) { // Can move in the Y direction 
 				moveDirection = moveDirectionY;
 			}
@@ -54,12 +53,13 @@ public class Player : MonoBehaviour {
 	}
 
 	private void HandleRotation() {
-		Vector2 rotationVector = inputHandler.GetMovementVector();
+		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-		if (rotationVector.magnitude < leftControllerDeadzone ) return; // Deadzone
+		Vector3 rotation = mousePosition - transform.position;
 
-		float angle = Mathf.Atan2(rotationVector.y, rotationVector.x) * Mathf.Rad2Deg - rotationOffset;
+		float angle = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+		Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle - rotationOffset));
 
-		transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(angle, Vector3.forward), rotationSpeed);
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
 	}
 }
