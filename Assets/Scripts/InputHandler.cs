@@ -23,4 +23,10 @@ public class InputHandler : MonoBehaviour {
 		return getSprint;
 	}
 
+	public float GetInteractKey() {
+		float getInteract = playerInputActions.Player.Interact.ReadValue<float>();
+
+		return getInteract;
+	}
+
 }
