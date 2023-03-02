@@ -44,6 +44,8 @@ public class Inventory : MonoBehaviour
             characterItems.Remove(itemToRemove);
             inventoryUI.RemoveItem(itemToRemove);
             Debug.Log("Item Removed: " + itemToRemove.title);
+        } else {
+            Debug.LogError("Item " + id + " is not in inventorys");
         }
     }
 
@@ -53,6 +55,8 @@ public class Inventory : MonoBehaviour
             characterItems.Remove(itemToRemove);
             inventoryUI.RemoveItem(itemToRemove);
             Debug.Log("Item Removed: " + itemToRemove.title);
+        } else {
+            Debug.LogError("Item " + itemName + " is not in inventorys");
         }
     }
 }
