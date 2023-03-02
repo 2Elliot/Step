@@ -17,7 +17,6 @@ public class PickUp : MonoBehaviour {
   }
 
   private void OnTriggerEnter2D(Collider2D other) {
-    Debug.Log("Enter");
     if (other.TryGetComponent<Player>(out Player Component)) {
       inRange = true;
       ShowGraphics();
